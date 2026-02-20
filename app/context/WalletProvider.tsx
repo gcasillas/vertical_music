@@ -16,20 +16,20 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
 
 async function connect() {
   try {
-    const allowed = await freighter.isAllowed()
-    if (!allowed) {
-      await freighter.requestAccess()
-    }
+    await freighter.setAllowed()
 
-    const result = await freighter.getAddress()
+    const { address } = await freighter.getAddress()
 
-    if (result && result.address) {
-      setAddress(result.address)
+    if (address) {
+      setAddress(address)
     }
   } catch (err) {
-    console.error("Wallet connection failed:", err)
+    console.error("Freighter connection failed:", err)
   }
 }
+
+
+
 
 
 
