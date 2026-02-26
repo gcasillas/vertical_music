@@ -7,12 +7,17 @@ import * as freighter from "@stellar/freighter-api"
 type WalletContextType = {
   address: string | null
   connect: () => Promise<void>
+  disconnect: () => void
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined)
 
 export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [address, setAddress] = useState<string | null>(null)
+
+  function disconnect() {
+  setAddress(null)
+}
 
 async function connect() {
   try {
@@ -34,7 +39,7 @@ async function connect() {
 
 
   return (
-    <WalletContext.Provider value={{ address, connect }}>
+    <WalletContext.Provider value={{ address, connect, disconnect }}>
       {children}
     </WalletContext.Provider>
   )

@@ -1,12 +1,39 @@
 import { Address, xdr, nativeToScVal } from "@stellar/stellar-sdk"
 import { invokeContract } from "./soroban"
+import { simulateReadOnly } from "./soroban"
 
 
 // --- 1. Define all your IDs at the top ---
 const RLT_TOKEN_ID = "CDWXMXFIAC5VLA744OGHOQDXDLXLQE2WQCUWUWYJQI2S4O46NEMJXWIC"
 const ROYALTY_CORE_ID = "CB3QTLZHBKZEXJ2JIVHGBJ5VVONNMZBYTB7EU44D77M6A2IWMVZC2SML"
 const ROUTER_ID = "CABKGM4RZOOMQVQBVVCDWN6QWZ66OF4BFL6SNW7IN5MZQUU4TXGRQGBW"
+const SIMULATION_ACCOUNT = "GD2JT267GKOXGIFVBL47ZIVFMB3BKAFX3AC7FYOD3WZL6GBMGOZZ7RSC"
 
+export async function safeGetListing(
+  listingId: number,
+  sourceAddress?: string
+) {
+  try {
+    const args = [xdr.ScVal.scvU32(listingId)]
+
+    await simulateReadOnly(
+      ROUTER_ID,
+      "get_listing",
+      args,
+      sourceAddress ?? SIMULATION_ACCOUNT
+    )
+
+    return {
+      id: listingId,
+      status: "active",
+    }
+  } catch {
+    return {
+      id: listingId,
+      status: "empty",
+    }
+  }
+}
 
 // --- 2. The Approval Function (The "Permission") ---
 export async function approveRLT(

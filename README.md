@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Vertical Music Marketplace: SaaS Edition
+### Automated Royalty Settlement Engine via Stellar/Soroban
 
-## Getting Started
+This platform is a production-ready MVP for a high-velocity music or digital asset marketplace. It features an automated "Split-Payment" architecture where royalties and platform fees are settled instantly on-chain via the Stellar Network.
 
-First, run the development server:
+---
 
+## 💎 Key Business Features
+* **Immutable Settlements:** 100% on-chain royalty distribution via Soroban smart contracts. No manual accounting required.
+* **Scalable Architecture:** Optimized chunk-based pagination supporting 1,000+ active listings without UI lag.
+* **Live Revenue Analytics:** Real-time "Ping" activity feed integrated with historical ledger timestamps for 100% transparency.
+* **Investor-Ready Dashboard:** High-fidelity visualization of revenue trends and transaction velocity using Chart.js.
+
+## 📊 Revenue Model (Configurable)
+- **Artist Payout:** 90% per sale (Settled instantly).
+- **Platform Fee:** 10% per sale (Automated collection to Platform Treasury).
+- **Asset Pricing:** Standardized at 5.00 RLT (Configurable via Contract/UI).
+
+## 🛠️ Technical Stack
+* **Framework:** Next.js 14 (App Router)
+* **Styling:** Tailwind CSS (Dark Mode Optimized)
+* **Blockchain:** Stellar Futurenet (Soroban Smart Contracts)
+* **Wallet:** Freighter Wallet Integration
+* **Charts:** Chart.js with real-time state synchronization
+
+---
+
+## 🚀 Getting Started
+
+### 1. Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+npm install
